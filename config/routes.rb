@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+  # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
