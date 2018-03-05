@@ -1,3 +1,9 @@
+<% if @order_items.size == 0 %>
+<p>
+  There are no items in your cart. Please <%= link_to "Back to Products", products_path %> and add some items to your cart.
+</p>
+<% else %>
+
 <section class="orders-show">
 
   <header class="page-header">
@@ -19,13 +25,25 @@
           </thead>
           <tbody>
             <% @order.line_items.each do |item| %>
-              <%= render 'item', product_id: item.product_id, quantity: item.quantity %>
-            <% end %>
+              <%= render 'item', product_id: item.product_id, quantity: item.quantity, item_price: item.price %>
           </tbody>
-          
+          <tfoot>
+            <tr>
+              <th colspan="4">
+                TOTAL:
+              </th>
+              <th>
+                <%= render 'item' total_price: item.price * item.quantity %>
+                <% end %>
+              </th>
+            </tr>
+          </tfoot>
    </table>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
+
+
+<% end %>
 

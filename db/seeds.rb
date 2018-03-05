@@ -132,5 +132,53 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+user1 = User.create!({
+  first_name: "Bob",
+  last_name: "Smith",
+  email: "bobSmith@hotmail.com",
+  password: "12345"
+  })
+
+user2 = User.create!({
+  first_name: "Angela",
+  last_name: "Robertson",
+  email: "ar_123@hotmail.com",
+  password: "12345"
+  })
+
+user3 = User.create!({
+  first_name: "Ted",
+  last_name: "Brown",
+  email: "tb23@hotmail.com",
+  password: "12345"
+  })
+
+
+pro1 = Product.find_or_create_by! name: 'Red Bookshelf'
+pro2 = Product.find_or_create_by! name:'Electric Chair'
+pro3 = Product.find_or_create_by! name: 'Hotdog Slicer'
+
+
+
+pro1.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: "This is a swell product",
+  rating: 4
+  })
+
+pro2.reviews.create!({
+  product_id: 2,
+  user_id: 1,
+  description: "No worth it!",
+  rating: 1
+  })
+
+pro3.reviews.create!({
+  product_id: 3,
+  user_id: 2,
+  description: "Great Value!, still looks brand new",
+  rating: 5
+  })
 
 puts "DONE!"
