@@ -136,21 +136,24 @@ user1 = User.create!({
   first_name: "Bob",
   last_name: "Smith",
   email: "bobSmith@hotmail.com",
-  password: "12345"
+  password: "12345",
+  password_confirmation: "12345"
   })
 
 user2 = User.create!({
   first_name: "Angela",
   last_name: "Robertson",
   email: "ar_123@hotmail.com",
-  password: "12345"
+  password: "12345",
+  password_confirmation: "12345"
   })
 
 user3 = User.create!({
   first_name: "Ted",
   last_name: "Brown",
   email: "tb23@hotmail.com",
-  password: "12345"
+  password: "12345",
+  password_confirmation: "12345"
   })
 
 
@@ -170,7 +173,7 @@ pro1.reviews.create!({
 pro2.reviews.create!({
   product_id: 2,
   user_id: 1,
-  description: "No worth it!",
+  description: "Not worth it!",
   rating: 1
   })
 

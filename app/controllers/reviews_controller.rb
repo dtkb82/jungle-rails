@@ -1,35 +1,30 @@
 class ReviewsController < ApplicationController
-	def index
-		@product = Product.find(params[:product_id])
-    	@reviews = @product.reviews
-  	end
+	before_action :find_product
+	before_action :find_review, only: [:destroy]
+	before_action :authenticate_user!, only: [:new]
 
-  	def show
-		@product = Product.find(params[:product_id])
-		@review = @product.reviews.find(params[:id])
-		@review.user = current_user 
+	def index
+		@review = Review.all.order("created_at DESC")
+		
 	end
 
 	def new
-		@product = Product.find(params[:product_id])
-    	@review = post.review.build
+		@review = Review.new
   	end
 
 	def create
-		@product = Product.find(params[:product_id])
-		@review = @product.reviews.create(review_params)
-		@review.user = current_user
-		@review.save
-		# redirect_to product_path(@product)
+		@review = Review.new(review_params)
+		@review.product_id = @product.id
+		@review.user_id = current_user.id
+
 		if @review.save
-      		redirect_to review_path(@review)
-    	else
-      		redirect_to products_path @product
-    	end
+			redirect_to product_path(@product)
+		else
+			render @product
+		end
 	end
 
 	def destroy
-		@review = current_user.reviews.find(params[:id])
 		@review.destroy
 		redirect_to product_path(@product)
 	end
@@ -37,6 +32,14 @@ class ReviewsController < ApplicationController
 
 	private
 		def review_params
-			params.require(:review).permit(:user, :description)
+			params.require(:review).permit(:rating, :description)
+		end
+
+		def find_product
+			@product = Product.find(params[:product_id])	
+		end
+
+		def find_review
+			@review = Review.find(params[:id])	
 		end
 end

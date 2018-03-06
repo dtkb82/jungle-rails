@@ -1,0 +1,10 @@
+<dd><%= review.user.first_name %></dd>
+<dd><%= review.rating %></dd>
+<dd><%= review.description %></dd>
+
+	<% if review.user_id == current_user.id %>
+
+<%= link_to "Delete", product_review_path(review.product, review), method: :delete, data: { confirm: "Are you sure?" } %>
+
+	<% end %>
+

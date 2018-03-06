@@ -22,34 +22,33 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-          <dt>Reviews</dt>
-          <% @product.reviews.each do |review| %>
-          <dt>User</dt>
-          <dd><%= review.user.first_name %></dd>
-          <dt>Stars</dt>
-          <dd><%= review.rating %></dd>
-          <dt>Description</dt>
-          <dd><%= review.description %></dd>
-          <% end %>
         </dl>
       </div>
+     
 
       <div>
-        <div>
-          <h4>Add a review:</h4>
-          <%= form_for([@product, @product.reviews.build]) do |f| %>
-          <p>
-            <%= f.label :description %><br>
-            <%= f.text_area :description %>
-          </p>
-          <p>
-            <%= f.label :rating %><br>
-            <%= f.select 'x', options_for_select(['1', '2', '3', '4', '5']), { prompt: true, selected: '2' }, required: true %> 
-          </p>
-          <p>
-            <%= f.submit %>
-          </p>
-          <% end %>  
+
+        <div class="col-sm-8">
+
+          <dl class="dl-horizontal">
+
+            <%= render @product.reviews %>
+
+            <h4>Add a review:</h4>
+            <%= form_for([@product, @product.reviews.build]) do |f| %>
+            <p>
+              <%= f.label :description %><br>
+              <%= f.text_area :description %>
+            </p>
+            <p>
+              <%= f.label :rating %><br>
+              <%= f.select 'rating', options_for_select(['1', '2', '3', '4', '5']), { prompt: true, selected: '2' }, required: true %> 
+            </p>
+            <p>
+              <%= f.submit %>
+            </p>
+            <% end %>
+          </dl>  
         </div>         
       </div>
     </div>
