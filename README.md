@@ -1,7 +1,12 @@
-# Jungle
+# Jungle App
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2. Jungle app will allow users to shop online and make purchases via Stripe API. Users can create and delete their own reviews. Admin can create new product categories.
 
+## Screenshots
+![""](https://github.com/dtkb82/jungle-rails/blob/master/docs/jungle_rails.png)
+![""](https://github.com/dtkb82/jungle-rails/blob/master/docs/jungle_rails1.png)
+![""](https://github.com/dtkb82/jungle-rails/blob/master/docs/jungle_rails2.png)
+![""](https://github.com/dtkb82/jungle-rails/blob/master/docs/jungle_rails3.png)
 
 ## Setup
 
