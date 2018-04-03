@@ -24,35 +24,23 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
-     
+    </div>
+  </article>
+      <div class="col-3">
 
-      <div>
+          <dl class=>
+            <div class="reviews">
+              
+              <%= render @product.reviews %>
 
-        <div class="col-sm-8">
-
-          <dl class="dl-horizontal">
-
-            <%= render @product.reviews %>
-
-            <h4>Add a review:</h4>
-            <%= form_for([@product, @product.reviews.build]) do |f| %>
-            <p>
-              <%= f.label :description %><br>
-              <%= f.text_area :description %>
-            </p>
-            <p>
-              <%= f.label :rating %><br>
-              <%= f.select 'rating', options_for_select(['1', '2', '3', '4', '5']), { prompt: true, selected: '2' }, required: true %> 
-            </p>
-            <p>
-              <%= f.submit %>
-            </p>
-            <% end %>
-          </dl>  
-        </div>         
+            </div>
+            
+            <% if current_user %>
+              <%= render 'form' %>
+              <% end %>
       </div>
     </div>
 
-  </article>
+  
 
 </section>

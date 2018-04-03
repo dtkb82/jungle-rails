@@ -1,9 +1,4 @@
 
-<p>
-  There are no items in your cart. Please <%= link_to "Back to Products", products_path %> and add some items to your cart.
-</p>
-<% else %>
-
 <section class="orders-show">
 
   <header class="page-header">
@@ -14,31 +9,34 @@
     <h4>Thank you for your order!</h4>       
   </div>
 
-  <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th colspan="2">Product</th>
-              <th>Category</th>
-              <th>Quantity</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
+  <div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
             <% @order.line_items.each do |item| %>
-              <%= render 'item', product_id: item.product_id, quantity: item.quantity, item_price: item.price %>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th colspan="4">
-                TOTAL:
-              </th>
-              <th>
-                <%= render 'item' total_price: item.price * item.quantity %>
-                <% end %>
-              </th>
-            </tr>
-          </tfoot>
-   </table>
+              <%= render 'item', product_id: item.product_id, quantity: item.quantity, total_price_cents: item.total_price_cents %>
+              
+        </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= @total_price_cents  %>
+            <% end %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
