@@ -1,0 +1,34 @@
+ <div class="form">
+   
+  <%= form_for([@product, @product.reviews.build]) do |f| %>
+  <h5>Add a review:</h5>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :rating %><br>
+    <%= f.select 'rating', options_for_select(['1', '2', '3', '4', '5']), { prompt: true, selected: '2' }, required: true %> 
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+  
